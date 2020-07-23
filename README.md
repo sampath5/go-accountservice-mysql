@@ -9,11 +9,11 @@ It runs on port 8000
 to create an account
 POST:  /account
 
-{
-	"customerid":"",
-	"email":"some@email.com",
-	"phone":xxxxxxxxxx
-}
+	{
+		"customerid":"",
+		"email":"some@email.com",
+		"phone":xxxxxxxxxx
+	}
 
 to get an account by id
 
@@ -21,11 +21,12 @@ GET:	/account/{customerid}
 
 To update an account
 PATCH:	/account/update
-{
-	"customerid":"",
-	"email":"some@email.com",
-	"phone":xxxxxxxxxx
-}
+
+	{
+		"customerid":"",
+		"email":"some@email.com",
+		"phone":xxxxxxxxxx
+	}
 
 To delete an account
 
