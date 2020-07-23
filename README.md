@@ -31,3 +31,8 @@ PATCH:	/account/update
 To delete an account
 
 DELETE: /account/{customerid}
+
+
+To run the service use command: go build 
+
+This generates a AccountService.exe file and Run it
