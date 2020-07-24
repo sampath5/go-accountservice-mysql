@@ -50,7 +50,8 @@ func (repo *repo) GetCustomerById(ctx context.Context, id string) (interface{}, 
 	return customer, nil
 }
 func (repo *repo) GetAllCustomers(ctx context.Context) (interface{}, error) {
-	customer := []Customer{}
+	customer := Customer{}
+	var res []interface{}
 	rows, err := repo.db.QueryContext(ctx, "SELECT c.customerid,c.email,c.phone FROM Customer as c ")
 	if err != nil {
 		if err == sql.ErrNoRows {
@@ -58,11 +59,13 @@ func (repo *repo) GetAllCustomers(ctx context.Context) (interface{}, error) {
 		}
 		return customer, err
 	}
+
 	defer rows.Close()
 	for rows.Next() {
-		err = rows.Scan(&customer)
+		err = rows.Scan(&customer.Customerid, &customer.Email, &customer.Phone)
+		res = append([]interface{}{customer}, res...)
 	}
-	return customer, nil
+	return res, nil
 }
 func (repo *repo) DeleteCustomer(ctx context.Context, id string) (string, error) {
 	res, err := repo.db.ExecContext(ctx, "DELETE FROM Customer WHERE customerid = ? ", id)

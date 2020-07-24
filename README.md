@@ -15,11 +15,16 @@ POST:  /account
 		"phone":xxxxxxxxxx
 	}
 
-to get an account by id
+To get an account by id
 
 GET:	/account/{customerid}
 
+To get all the customers details
+
+GET: /account/getAll
+
 To update an account
+
 PATCH:	/account/update
 
 	{
